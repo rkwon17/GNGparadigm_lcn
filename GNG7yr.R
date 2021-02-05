@@ -32,8 +32,11 @@ data011 <- FrameList(subj011)
 preview_levels(data011)
 preview_frames(data011)
 
-#based on the freq, trialist is the list with the go/no go 52 blocks
+triallist_11 <- filter_in(data011, "Running", "triallist")
+preview_levels(triallist_11)
+triallist11_df <- to_data_frame(triallist_11)
 
+#based on the freq, trialist is the list with the go/no go 52 blocks
 
 #types of responses - 
 #A - anticipatory: RT less than 200ms

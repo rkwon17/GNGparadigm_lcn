@@ -31,15 +31,23 @@ subj011<- read_eprime("gonogo7year_final-011-1.txt")
 data011 <- FrameList(subj011)
 preview_levels(data011)
 preview_frames(data011)
-
+#go no go trials
 triallist_11 <- filter_in(data011, "Running", "triallist")
 preview_levels(triallist_11)
 triallist11_df <- to_data_frame(triallist_11)
 
-#based on the freq, trialist is the list with the go/no go 52 blocks
+#go trials only (?) 
+gotrials <- filter_in(data011, "Running", "RTtriallist")
+preview_levels(gotrials)
+gotrials <- to_data_frame(gotrials)
 
-#types of responses - 
-#A - anticipatory: RT less than 200ms
-#hit
-#miss
+#correct/ incorrect for go trials only
+  #factor HIT, MISS, Other
+gotrials$responsenum <- ifelse( gotrials$Response== "HIT", 1, ifelse(gotrials$Response == "MISS", 0, 9))
+gotrials %>% count(responsenum)
+
+  
+  
+#exclusionary criteria: 
+# how many trials? 
 
